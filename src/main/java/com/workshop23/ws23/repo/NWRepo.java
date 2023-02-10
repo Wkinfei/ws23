@@ -20,17 +20,21 @@ public class NWRepo {
     public List<OrderDetail> getOrderDetail(Integer orderId){
         
         List<OrderDetail> orderDetail = new LinkedList<>();
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
-        System.out.println(orderDetail);
+        // System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+        // System.out.println(orderDetail);
         SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_NW_GET_ORDER_DETAIL,orderId);
 
         while(rs.next()){
+            if(null == rs.getString("order_id")){
+                System.out.println("Primary key is blank");
+                continue;
+            }
             orderDetail.add(OrderDetail.fromSQL(rs));
-            System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCccc");
-            System.out.println(orderDetail);
+            // System.out.println("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCccc");
+            // System.out.println(orderDetail);
         }
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println(orderDetail);;
+        // System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        // System.out.println(orderDetail);;
        
         return orderDetail;
 

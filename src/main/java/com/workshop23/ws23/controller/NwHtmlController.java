@@ -12,10 +12,10 @@ import com.workshop23.ws23.repo.NWRepo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+
 
 @Controller
-@RequestMapping(path="/order")
+@RequestMapping("/")
 public class NwHtmlController {
     @Autowired
     NWRepo nwRepo;
@@ -26,7 +26,7 @@ public class NwHtmlController {
         return "index";
     }
 
-    @GetMapping("/total")
+    @GetMapping("/order/total")
     public String result(@RequestParam(name="id") Integer orderId, Model model){
         List<OrderDetail> orderDetails = nwRepo.getOrderDetail(orderId);
         model.addAttribute("orderDetails", orderDetails);
