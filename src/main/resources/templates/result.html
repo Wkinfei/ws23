@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Order Details</h1>
+    <span data-th-text="${#lists.size(orderDetails)}"></span>
+    <div data-th-if="${#lists.size(orderDetails) <= 0}">
+        <h2>No order found</h2>
+    </div>
+</div>
+<div data-th-each="od: ${orderDetails}" data-th-if="${#lists.size(orderDetails) > 0}" 
+      style="border: 1px black solid; border-radius: 8px; padding: 8px; margin-bottom: 2px;">
+  <li data-th-text="'Order Id: ' + ${od.id}"></li>
+  <li data-th-text="'Order Date: ' + ${od.orderDate}"></li>
+  <li data-th-text="'Customer Id: ' +${od.customerId}"></li>
+  <li data-th-text="'Total Price: $' +${od.totalPrice}"></li>
+  <li data-th-text="'Cost Price: $' +${od.costPrice}"></li>
+</div>
+</body>
+</html>
